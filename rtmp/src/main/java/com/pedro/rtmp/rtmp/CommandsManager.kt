@@ -205,8 +205,11 @@ abstract class CommandsManager {
       }
       val video = Video(flvPacket, streamId)
       video.writeHeader(output)
+      Log.i(TAG, "write header")
       video.writeBody(output)
+      Log.i(TAG, "write body")
       socket.flush(true)
+      Log.i(TAG, "flush")
       return video.header.getPacketLength() //get packet size with header included to calculate bps
     }
   }
